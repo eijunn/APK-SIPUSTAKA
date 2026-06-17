@@ -1,0 +1,206 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="flex items-center gap-3 mb-8">
+
+    <a
+        href="/buku/"
+        class="text-slate-500 hover:text-slate-700 text-4xl mt-1"
+    >
+        ←
+    </a>
+
+    <div>
+        <p class="text-slate-500">
+            kelola Buku
+        </p>
+
+        <h1 class="text-3xl font-bold">
+            Tambah buku
+        </h1>
+    </div>
+
+</div>
+<div class="bg-white rounded-3xl shadow-sm p-6 max-w-5xl">
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <div class="grid grid-cols-2 gap-5">
+
+            <!-- Judul -->
+
+            <div>
+                <label class="block text-sm font-medium mb-2">
+                    Judul Buku
+                </label>
+
+                <input
+                    type="text"
+                    name="judul"
+                    class="w-full border border-slate-200 rounded-2xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required
+                >
+            </div>
+
+            <!-- Pengarang -->
+
+            <div>
+                <label class="block text-sm font-medium mb-2">
+                    Pengarang
+                </label>
+
+                <input
+                    type="text"
+                    name="pengarang"
+                    class="w-full border border-slate-200 rounded-2xl px-4 py-3"
+                    required
+                >
+            </div>
+
+            <!-- Kategori -->
+
+            <div>
+                <label class="block text-sm font-medium mb-2">
+                    Kategori
+                </label>
+
+                <select
+                    name="kategori"
+                    class="w-full border border-slate-200 rounded-2xl px-4 py-3"
+                    required
+                >
+                    <option value="">Pilih Kategori</option>
+                    <option>Novel</option>
+                    <option>Sejarah</option>
+                    <option>Pendidikan</option>
+                    <option>Teknologi</option>
+                    <option>Agama</option>
+                    <option>Biografi</option>
+                </select>
+            </div>
+
+            <!-- Penerbit -->
+
+            <div>
+                <label class="block text-sm font-medium mb-2">
+                    Penerbit
+                </label>
+
+                <input
+                    type="text"
+                    name="penerbit"
+                    class="w-full border border-slate-200 rounded-2xl px-4 py-3"
+                    required
+                >
+            </div>
+
+            <!-- Tahun -->
+
+            <div>
+                <label class="block text-sm font-medium mb-2">
+                    Tahun Terbit
+                </label>
+
+                <input
+                    type="number"
+                    name="tahun_terbit"
+                    class="w-full border border-slate-200 rounded-2xl px-4 py-3"
+                    required
+                >
+            </div>
+
+            <!-- Stok -->
+
+            <div>
+                <label class="block text-sm font-medium mb-2">
+                    Stok
+                </label>
+
+                <input
+                    type="number"
+                    name="stok"
+                    class="w-full border border-slate-200 rounded-2xl px-4 py-3"
+                    required
+                >
+            </div>
+
+            <!-- ISBN -->
+
+            <div>
+                <label class="block text-sm font-medium mb-2">
+                    ISBN
+                </label>
+
+                <input
+                    type="text"
+                    name="isbn"
+                    class="w-full border border-slate-200 rounded-2xl px-4 py-3"
+                >
+            </div>
+
+            <!-- Rak -->
+
+            <div>
+                <label class="block text-sm font-medium mb-2">
+                    Rak / Lokasi
+                </label>
+
+                <select
+                    name="rak"
+                    class="w-full border border-slate-200 rounded-2xl px-4 py-3"
+                >
+                    <option value="">Pilih Rak</option>
+                    <option>Rak A-01</option>
+                    <option>Rak A-02</option>
+                    <option>Rak A-03</option>
+                    <option>Rak A-04</option>
+                    <option>Rak A-05</option>
+                </select>
+            </div>
+
+        </div>
+
+        <!-- Deskripsi -->
+
+        <div class="mt-5">
+
+            <label class="block text-sm font-medium mb-2">
+                Deskripsi
+            </label>
+
+            <textarea
+                name="deskripsi"
+                rows="4"
+                class="w-full border border-slate-200 rounded-2xl px-4 py-3"
+            ></textarea>
+
+        </div>
+
+        <hr class="my-6">
+
+        <div class="flex justify-end gap-3">
+
+            <a
+                href="/buku/"
+                class="px-6 py-3 border rounded-2xl hover:bg-slate-50"
+            >
+                Batal
+            </a>
+
+            <button
+                type="submit"
+                class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-2xl"
+            >
+                Simpan Buku
+            </button>
+
+        </div>
+
+    </form>
+
+</div>
+
+{% endblock %}

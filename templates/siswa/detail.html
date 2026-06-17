@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="max-w-3xl">
+
+    <!-- Header -->
+    <div class="flex items-start gap-3 mb-8">
+
+        <a href="{% url 'siswa_list' %}"
+           class="text-gray-500 hover:text-gray-700 mt-1 text-4xl">
+
+            ←
+
+        </a>
+
+        <div>
+
+            <p class="text-gray-500 text-sm">
+                Kelola User
+            </p>
+
+            <h1 class="text-4xl font-bold">
+                Detail User
+            </h1>
+
+        </div>
+
+    </div>
+
+    <!-- Card -->
+    <div class="bg-white rounded-3xl shadow-sm p-6">
+
+        <div class="grid md:grid-cols-2 gap-5">
+
+            <!-- ID -->
+            <div class="bg-slate-50 rounded-3xl p-6">
+
+                <p class="text-xs uppercase tracking-[0.3em] text-gray-500 mb-3">
+                    ID
+                </p>
+
+                <p class="text-3xl font-bold">
+                    {{ siswa.id }}
+                </p>
+
+            </div>
+
+            <!-- Nama -->
+            <div class="bg-slate-50 rounded-3xl p-6">
+
+                <p class="text-xs uppercase tracking-[0.3em] text-gray-500 mb-3">
+                    Nama
+                </p>
+
+                <p class="text-2xl font-semibold">
+                    {{ siswa.nama }}
+                </p>
+
+            </div>
+
+            <!-- Kelas -->
+            <div class="bg-slate-50 rounded-3xl p-6">
+
+                <p class="text-xs uppercase tracking-[0.3em] text-gray-500 mb-3">
+                    Kelas
+                </p>
+
+                <p class="text-2xl font-semibold">
+                    {{ siswa.kelas }}
+                </p>
+
+            </div>
+
+            <!-- NIS -->
+            <div class="bg-slate-50 rounded-3xl p-6">
+
+                <p class="text-xs uppercase tracking-[0.3em] text-gray-500 mb-3">
+                    NIS
+                </p>
+
+                <p class="text-2xl font-semibold">
+                    {{ siswa.nis }}
+                </p>
+
+            </div>
+
+            <!-- Status -->
+            <div class="bg-slate-50 rounded-3xl p-6">
+
+                <p class="text-xs uppercase tracking-[0.3em] text-gray-500 mb-3">
+                    Status
+                </p>
+
+                {% if siswa.is_active %}
+
+                    <span class="bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-medium">
+                        Aktif
+                    </span>
+
+                {% else %}
+
+                    <span class="bg-red-100 text-red-700 px-4 py-2 rounded-full text-sm font-medium">
+                        Tidak Aktif
+                    </span>
+
+                {% endif %}
+
+            </div>
+
+            <!-- Total Pinjam -->
+            <div class="bg-slate-50 rounded-3xl p-6">
+
+                <p class="text-xs uppercase tracking-[0.3em] text-gray-500 mb-3">
+                    Total Peminjaman
+                </p>
+
+                <p class="text-3xl font-bold">
+                    {{ total_pinjam }}
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- Full Width -->
+        <div class="mt-5">
+
+            <div class="bg-slate-50 rounded-3xl p-6">
+
+                <p class="text-xs uppercase tracking-[0.3em] text-gray-500 mb-3">
+                    Peminjaman Aktif
+                </p>
+
+                <p class="text-lg">
+                    {{ peminjaman_aktif }}
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

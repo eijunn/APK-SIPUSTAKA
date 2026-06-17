@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="space-y-6">
+
+    <!-- Top stat cards -->
+    <div class="grid grid-cols-4 gap-6">
+
+        <div class="bg-white rounded-2xl p-6 shadow relative">
+            <div class="absolute top-4 right-4">
+                <span class="material-symbols-outlined text-sky-500 text-[24px]">inventory_2</span>
+            </div>
+            <p class="text-sm text-slate-400">Total Buku</p>
+            <h2 class="text-3xl font-bold">{{ total_buku }}</h2>
+            <p class="text-sm text-slate-400 mt-2">Keseluruhan unit buku tersedia.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 shadow relative">
+            <div class="absolute top-4 right-4">
+                <span class="material-symbols-outlined text-indigo-500 text-[24px]">format_list_bulleted</span>
+            </div>
+            <p class="text-sm text-slate-400">Total Judul</p>
+            <h2 class="text-3xl font-bold">{{ total_judul }}</h2>
+            <p class="text-sm text-slate-400 mt-2">Jumlah koleksi judul buku.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 shadow relative">
+            <div class="absolute top-4 right-4">
+                <span class="material-symbols-outlined text-amber-500 text-[24px]">schedule</span>
+            </div>
+            <p class="text-sm text-slate-400">Sedang Dipinjam</p>
+            <h2 class="text-3xl font-bold">{{ dipinjam }}</h2>
+            <p class="text-sm text-slate-400 mt-2">Transaksi peminjaman aktif.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 shadow relative">
+            <div class="absolute top-4 right-4">
+                <span class="material-symbols-outlined text-emerald-500 text-[24px]">check_circle</span>
+            </div>
+            <p class="text-sm text-slate-400">Sudah Dikembalikan</p>
+            <h2 class="text-3xl font-bold">{{ dikembalikan }}</h2>
+            <p class="text-sm text-slate-400 mt-2">Transaksi yang sudah selesai.</p>
+        </div>
+
+    </div>
+
+    <!-- Lower cards -->
+    <div class="grid grid-cols-2 gap-6">
+
+        <div class="bg-white rounded-2xl p-6 shadow">
+            <p class="text-sm text-slate-400">Analisis Stok</p>
+            <h3 class="text-lg font-semibold mb-4">Distribusi Stok Buku</h3>
+
+            <div class="space-y-4">
+                {% for judul, stok, persen in stok_buku %}
+                <div>
+                    <div class="flex justify-between mb-1">
+                        <div class="text-sm font-medium text-slate-700 truncate" title="{{ judul }}">{{ judul }}</div>
+                        <div class="text-sm text-slate-500">{{ stok }}</div>
+                    </div>
+
+                    <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                        <div class="h-2 bg-blue-500 rounded-full" style="width: {{ persen }}%"></div>
+                    </div>
+                </div>
+                {% empty %}
+                <p class="text-sm text-slate-400">Tidak ada data stok.</p>
+                {% endfor %}
+            </div>
+
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 shadow">
+            <p class="text-sm text-slate-400">Status Peminjaman</p>
+            <h3 class="text-lg font-semibold mb-4">Ringkasan Transaksi</h3>
+
+            <div class="space-y-6">
+
+                <div>
+                    <div class="flex justify-between mb-1">
+                        <div class="text-sm font-medium text-slate-700">Sedang Dipinjam</div>
+                        <div class="text-sm text-slate-500">{{ dipinjam }}</div>
+                    </div>
+
+                    <div class="w-full bg-slate-100 h-3 rounded-full overflow-hidden">
+                        <div class="h-3 bg-amber-500 rounded-full" style="width: {{ dipinjam_percent }}%"></div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="flex justify-between mb-1">
+                        <div class="text-sm font-medium text-slate-700">Sudah Dikembalikan</div>
+                        <div class="text-sm text-slate-500">{{ dikembalikan }}</div>
+                    </div>
+
+                    <div class="w-full bg-slate-100 h-3 rounded-full overflow-hidden">
+                        <div class="h-3 bg-emerald-400 rounded-full" style="width: {{ dikembalikan_percent }}%"></div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,95 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>SIPUSTAKA</title>
+
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body class="bg-slate-100 text-slate-900 h-screen overflow-hidden">
+
+    <div class="h-screen flex">
+
+        <!-- SIDEBAR -->
+        <aside class="w-72 h-screen bg-slate-950 text-slate-100 flex flex-col">
+
+            <div class="px-6 py-7 border-b border-slate-800">
+                <div class="flex items-center gap-3">
+
+                    <img src="{% static 'img/logo.webp' %}" alt="Logo" class="w-12 h-12 object-contain" />
+                    <div>
+                        <p class="text-sm uppercase text-slate-400">
+                            SIPUSTAKA
+                        </p>
+
+                        <h1 class="text-xl font-semibold">
+                            Sistem Peminjaman Buku
+                        </h1>
+                    </div>
+
+                </div>
+            </div>
+
+            <nav class="flex-1 px-4 py-6 space-y-2">
+
+                <a href="/" class="flex items-center gap-3 rounded-xl px-4 py-3 hover:bg-slate-900">
+                    <span class="material-symbols-outlined text-slate-300 text-[20px]">home</span>
+                    <span>Dashboard</span>
+                </a>
+
+                <a href="/buku/" class="flex items-center gap-3 rounded-xl px-4 py-3 hover:bg-slate-900">
+                    <span class="material-symbols-outlined text-slate-300 text-[20px]">menu_book</span>
+                    <span>Buku</span>
+                </a>
+
+                <a href="/peminjaman/" class="flex items-center gap-3 rounded-xl px-4 py-3 hover:bg-slate-900">
+                    <span class="material-symbols-outlined text-slate-300 text-[20px]">assignment</span>
+                    <span>Peminjaman</span>
+                </a>
+
+                <a href="/siswa/" class="flex items-center gap-3 rounded-xl px-4 py-3 hover:bg-slate-900">
+                    <span class="material-symbols-outlined text-slate-300 text-[20px]">people</span>
+                    <span>User</span>
+                </a>
+
+            </nav>
+
+            <div class="mt-auto p-6">
+
+                <div class="bg-slate-900 rounded-2xl p-4">
+
+                    <p class="text-slate-400 text-sm">
+                        Admin Aktif
+                    </p>
+
+                    <p class="font-semibold">
+                        Evv
+                    </p>
+
+                </div>
+
+            </div>
+
+        </aside>
+
+        <!-- CONTENT -->
+        <main class="flex-1 overflow-y-auto p-8">
+
+            {% block content %}
+            {% endblock %}
+
+        </main>
+
+    </div>
+
+</body>
+
+</html>

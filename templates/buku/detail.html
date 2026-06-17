@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="flex items-center gap-3 mb-8">
+
+    <a
+        href="/buku/"
+        class="text-slate-500 hover:text-slate-700 text-4xl mt-1"
+    >
+        ←
+    </a>
+
+    <div>
+        <p class="text-slate-500">
+            kelola Buku
+        </p>
+
+        <h1 class="text-3xl font-bold">
+            Detail buku
+
+        </h1>
+    </div>
+
+</div>
+
+<div class="bg-white rounded-3xl shadow-sm p-5 max-w-3xl">
+
+    <div class="grid grid-cols-2 gap-4">
+
+        <div class="bg-slate-50 rounded-3xl p-6">
+            <p class="text-xs tracking-[4px] text-slate-400 uppercase mb-3">
+                Judul
+            </p>
+
+            <p class="font-bold text-2xl">
+                {{ buku.judul }}
+            </p>
+        </div>
+
+        <div class="bg-slate-50 rounded-3xl p-6">
+            <p class="text-xs tracking-[4px] text-slate-400 uppercase mb-3">
+                Pengarang
+            </p>
+
+            <p class="font-bold text-2xl">
+                {{ buku.pengarang }}
+            </p>
+        </div>
+
+        <div class="bg-slate-50 rounded-3xl p-6">
+            <p class="text-xs tracking-[4px] text-slate-400 uppercase mb-3">
+                Kategori
+            </p>
+
+            <p class="font-bold text-xl">
+                {{ buku.kategori }}
+            </p>
+        </div>
+
+        <div class="bg-slate-50 rounded-3xl p-6">
+            <p class="text-xs tracking-[4px] text-slate-400 uppercase mb-3">
+                Penerbit
+            </p>
+
+            <p class="font-bold text-xl">
+                {{ buku.penerbit }}
+            </p>
+        </div>
+
+        <div class="bg-slate-50 rounded-3xl p-6">
+            <p class="text-xs tracking-[4px] text-slate-400 uppercase mb-3">
+                Tahun Terbit
+            </p>
+
+            <p class="font-bold text-xl">
+                {{ buku.tahun_terbit }}
+            </p>
+        </div>
+
+        <div class="bg-slate-50 rounded-3xl p-6">
+            <p class="text-xs tracking-[4px] text-slate-400 uppercase mb-3">
+                ISBN
+            </p>
+
+            <p class="font-bold text-xl">
+                {{ buku.isbn }}
+            </p>
+        </div>
+
+        <div class="bg-slate-50 rounded-3xl p-6">
+            <p class="text-xs tracking-[4px] text-slate-400 uppercase mb-3">
+                Rak / Lokasi
+            </p>
+
+            <p class="font-bold text-xl">
+                {{ buku.rak }}
+            </p>
+        </div>
+
+        <div class="bg-slate-50 rounded-3xl p-6">
+            <p class="text-xs tracking-[4px] text-slate-400 uppercase mb-3">
+                Stok
+            </p>
+
+            <p class="font-bold text-xl">
+                {{ buku.stok }}
+            </p>
+        </div>
+
+    </div>
+
+    <div class="mt-4 bg-slate-50 rounded-3xl p-6">
+
+        <p class="text-xs tracking-[4px] text-slate-400 uppercase mb-3">
+            Deskripsi
+        </p>
+
+        <p class="text-slate-700 leading-relaxed">
+            {{ buku.deskripsi }}
+        </p>
+
+    </div>
+
+</div>
+
+{% endblock %}

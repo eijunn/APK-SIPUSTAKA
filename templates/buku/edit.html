@@ -1,0 +1,215 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="max-w-5xl">
+
+    <!-- Header -->
+    <div class="flex items-start gap-3 mb-8">
+
+        <a
+            href="/buku/"
+            class="text-slate-500 hover:text-slate-700 mt-1 text-4xl"
+        >
+            ←
+        </a>
+
+        <div>
+            <p class="text-slate-500">
+                Kelola Buku
+            </p>
+
+            <h1 class="text-4xl font-bold text-slate-900">
+                Edit Buku
+            </h1>
+        </div>
+
+    </div>
+
+    <!-- Card -->
+    <div class="bg-white rounded-3xl shadow-sm border border-slate-200 p-8">
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <!-- Grid -->
+            <div class="grid grid-cols-2 gap-x-6 gap-y-6">
+
+                <!-- Judul -->
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-2">
+                        Judul Buku
+                    </label>
+
+                    <input
+                        type="text"
+                        name="judul"
+                        value="{{ buku.judul }}"
+                        class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4"
+                    >
+                </div>
+
+                <!-- Pengarang -->
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-2">
+                        Pengarang
+                    </label>
+
+                    <input
+                        type="text"
+                        name="pengarang"
+                        value="{{ buku.pengarang }}"
+                        class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4"
+                    >
+                </div>
+
+                <!-- Kategori -->
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-2">
+                        Kategori
+                    </label>
+
+                    <select
+                        name="kategori"
+                        class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4"
+                    >
+                        <option {% if buku.kategori == "Novel" %}selected{% endif %}>
+                            Novel
+                        </option>
+
+                        <option {% if buku.kategori == "Komik" %}selected{% endif %}>
+                            Komik
+                        </option>
+
+                        <option {% if buku.kategori == "Pendidikan" %}selected{% endif %}>
+                            Pendidikan
+                        </option>
+
+                        <option {% if buku.kategori == "Agama" %}selected{% endif %}>
+                            Agama
+                        </option>
+
+                        <option {% if buku.kategori == "Teknologi" %}selected{% endif %}    >
+                            Teknologi
+                        </option>
+                    </select>
+                </div>
+
+                <!-- Penerbit -->
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-2">
+                        Penerbit
+                    </label>
+
+                    <input
+                        type="text"
+                        name="penerbit"
+                        value="{{ buku.penerbit }}"
+                        class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4"
+                    >
+                </div>
+
+                <!-- Tahun -->
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-2">
+                        Tahun Terbit
+                    </label>
+
+                    <input
+                        type="number"
+                        name="tahun_terbit"
+                        value="{{ buku.tahun_terbit }}"
+                        class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4"
+                    >
+                </div>
+
+                <!-- Stok -->
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-2">
+                        Stok
+                    </label>
+
+                    <input
+                        type="number"
+                        name="stok"
+                        value="{{ buku.stok }}"
+                        class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4"
+                    >
+                </div>
+
+                <!-- ISBN -->
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-2">
+                        ISBN
+                    </label>
+
+                    <input
+                        type="text"
+                        name="isbn"
+                        value="{{ buku.isbn }}"
+                        class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4"
+                    >
+                </div>
+
+                <!-- Rak -->
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-2">
+                        Rak / Lokasi
+                    </label>
+
+                    <input
+                        type="text"
+                        name="rak"
+                        value="{{ buku.rak }}"
+                        class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4"
+                    >
+                </div>
+
+            </div>
+
+            <!-- Deskripsi -->
+            <div class="mt-6">
+
+                <label class="block text-sm font-medium text-slate-700 mb-2">
+                    Deskripsi
+                </label>
+
+                <textarea
+                    name="deskripsi"
+                    rows="4"
+                    class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 resize-none"
+                >{{ buku.deskripsi }}</textarea>
+
+            </div>
+
+            <!-- Footer -->
+            <div class="mt-8 pt-6 border-t border-slate-200">
+
+                <div class="flex justify-end gap-3">
+
+                    <a
+                        href="/buku/"
+                        class="px-6 py-3 rounded-2xl border border-slate-300 bg-white hover:bg-slate-50"
+                    >
+                        Batal
+                    </a>
+
+                    <button
+                        type="submit"
+                        class="px-6 py-3 rounded-2xl bg-blue-600 hover:bg-blue-700 text-white shadow"
+                    >
+                        Perbarui Buku
+                    </button>
+
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

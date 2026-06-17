@@ -1,0 +1,76 @@
+ {% extends 'base.html' %}
+
+{% block content %}
+
+<h1 class="text-3xl font-bold mb-6">
+    Tambah User
+</h1>
+
+<div class="bg-white p-8 rounded-3xl shadow">
+
+<form method="POST">
+
+    {% csrf_token %}
+
+    <div class="mb-4">
+        <label>Nama</label>
+
+        <input
+            type="text"
+            name="nama"
+            class="w-full border rounded-xl p-3"
+            required
+        >
+    </div>
+
+    <div class="mb-4">
+        <label>Kelas</label>
+
+        <input
+            type="text"
+            name="kelas"
+            class="w-full border rounded-xl p-3"
+            required
+        >
+    </div>
+
+    <div class="mb-4">
+        <label>NIS</label>
+
+        <input
+            type="text"
+            name="nis"
+            class="w-full border rounded-xl p-3"
+            required
+        >
+    </div>
+
+    <div class="mb-4">
+        <label>Status</label>
+
+        <select
+            name="is_active"
+            class="w-full border rounded-xl p-3"
+        >
+            <option value="True">
+                Aktif
+            </option>
+
+            <option value="False">
+                Tidak Aktif
+            </option>
+        </select>
+    </div>
+
+    <button
+        type="submit"
+        class="bg-blue-600 text-white px-5 py-3 rounded-xl"
+    >
+        Simpan User
+    </button>
+
+</form>
+
+</div>
+
+{% endblock %}

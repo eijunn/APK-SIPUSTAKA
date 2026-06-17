@@ -1,0 +1,204 @@
+    {% extends 'base.html' %}
+
+    {% block content %}
+
+    <div class="flex items-center gap-3 mb-8">
+
+        <a
+            href="/peminjaman/"
+            class="text-slate-500 hover:text-slate-700 text-4xl mt-1"
+        >
+            ←
+        </a>
+
+        <div>
+            <p class="text-slate-500">
+                Peminjaman Buku
+            </p>
+
+            <h1 class="text-3xl font-bold">
+                Pinjam Buku
+            </h1>
+        </div>
+
+    </div>
+
+
+    <div class="bg-white rounded-3xl shadow-lg p-8 max-w-5xl">
+
+    <form method="POST">
+
+    {% csrf_token %}
+
+    <div class="grid md:grid-cols-2 gap-6"> 
+
+        <div>
+
+    <label class="block mb-2 font-medium">
+        Nama Peminjam
+    </label>
+
+    <select
+        name="siswa"
+        class="w-full border rounded-2xl px-4 py-3"
+    >
+
+    {% for item in siswa %}
+
+    <option value="{{ item.0 }}">
+        {{ item.1 }} ({{ item.2 }})
+    </option>
+
+    {% endfor %}
+
+    </select>
+
+    </div>
+    <div>
+
+    <label class="block mb-2 font-medium">
+        Pilih Buku
+    </label>
+
+    <select
+        name="buku"
+        class="w-full border rounded-2xl px-4 py-3"
+    >
+
+    {% for item in buku %}
+
+    <option value="{{ item.0 }}">
+        {{ item.1 }} ({{ item.2 }} stok)
+    </option>
+
+    {% endfor %}
+
+    </select>
+
+    </div>
+    <div>
+
+    <label class="block mb-2 font-medium">
+        Tanggal Pinjam
+    </label>
+
+    <input
+        type="date"
+        name="tanggal_pinjam"
+        class="w-full border rounded-2xl px-4 py-3"
+    >
+
+    </div>
+    <div>
+
+    <label class="block mb-2 font-medium">
+        Tanggal Jatuh Tempo
+    </label>
+
+    <input
+        type="date"
+        name="jatuh_tempo"
+        class="w-full border rounded-2xl px-4 py-3"
+    >
+
+    </div>
+    <div>
+
+        <label class="block mb-2 font-medium">
+            Keperluan
+        </label>
+
+        <select
+            name="keperluan"
+            class="w-full border rounded-2xl px-4 py-3"
+            required
+        >
+            <option value="">-- Pilih Keperluan --</option>
+
+            <option value="Tugas Sekolah">
+                Tugas Sekolah
+            </option>
+
+            <option value="Bacaan Pribadi">
+                Bacaan Pribadi
+            </option>
+
+            <option value="Pekerjaan">
+                Pekerjaan
+            </option>
+
+            <option value="Penelitian">
+                Penelitian
+            </option>
+
+            <option value="Referensi">
+                Referensi
+            </option>
+
+            <option value="Pengembangan Diri">
+                Pengembangan Diri
+            </option>
+
+            <option value="Hobi Membaca">
+                Hobi Membaca
+            </option>
+
+            <option value="Lainnya">
+                Lainnya
+            </option>
+
+        </select>
+
+    </div>
+    <div>
+
+        <label class="block mb-2 font-medium">
+            Petugas
+        </label>
+
+        <input
+            type="text"
+            name="petugas"
+            value="Budi Siregar"
+            class="w-full border rounded-2xl px-4 py-3"
+            placeholder="Nama petugas"
+        >
+
+    </div>
+    <div class="md:col-span-2">
+
+    <label class="block mb-2 font-medium">
+        catatan
+    </label>
+
+    <textarea
+        name="keperluan"
+        rows="4"
+        class="w-full border rounded-2xl px-4 py-3"
+    ></textarea>
+
+
+    <div
+        class="flex justify-end gap-3 mt-8 pt-6 border-t"
+    >
+
+    <a
+        href="/peminjaman/"
+        class="px-6 py-3 border rounded-2xl"
+    >
+        Batal
+    </a>
+
+    <button
+        type="submit"
+        class="bg-blue-600 text-white px-6 py-3 rounded-2xl"
+    >
+        Pinjam Buku
+    </button>
+
+    </div>
+
+    </form>
+    </div>
+
+    {% endblock %}
